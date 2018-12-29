@@ -24,10 +24,6 @@ var request_url_first = "https://www.abc.virginia.gov/webapi/inventory/storeNear
 var request_url_middle = "&productCode=";
 var request_url_end = "&mileRadius=999&storeCount=5";
 
-//rimraf.sync('tmp');
-//fs.mkdirSync('tmp');
-    
-
 //used to output JSON to a file for later parsing.
 //will use these to try to bruteforce the optimal API 
 function output_string_to_file(string,store_num,product_num){
@@ -78,6 +74,9 @@ function query_to_file(store_num,product_num){
 }
 
 // for (var i = 0; i < 1000; i++) { 
+//     rimraf.sync('tmp');
+//     fs.mkdirSync('tmp');
+
 //     var product_num = "016850";
 //     var store_num = i.toString();
 //     query_to_file(store_num,product_num);
@@ -99,6 +98,8 @@ fs.readdir(testFolder, (err, files) => {
     for (var i=0; i < neighbors.length;i++){
         neighbors_list.push(parseInt(neighbors[i]["storeId"]["_text"]));
     }
-    console.log(store_id, "=>",neighbors_list)
+    var neighbors_string = store_id + "=> [" + neighbors_list.toString() + ']';
+    console.log(store_id, "=>",neighbors_list);
+    fs.appendFileSync('./tmp/neighbors', neighbors_string + '\n');
   });
 });
