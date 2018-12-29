@@ -1,0 +1,35 @@
+{
+  "name": "node_whisky",
+  "version": "0.0.1",
+  "description": "checks VA ABC stores for whisky",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hortinstein/node_whisky.git"
+  },
+  "keywords": [
+    "whisky",
+    "abc",
+    "store",
+    "virginia"
+  ],
+  "author": "hortinstein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hortinstein/node_whisky/issues"
+  },
+  "homepage": "https://github.com/hortinstein/node_whisky#readme",
+  "dependencies": {
+    "colors": "^1.3.3",
+    "columnify": "^1.5.4",
+    "geodist": "^0.2.1",
+    "lodash": "^4.17.11",
+    "request": "^2.88.0",
+    "rimraf": "^2.6.2",
+    "xml-js": "^1.6.8"
+  }
+}
