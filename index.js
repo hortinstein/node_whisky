@@ -55,7 +55,7 @@ function parse_store_resp(obj){
     var store_loc = {lat: floatLat, lon: floatLong}
 
     var dist = geodist(me_loc, store_loc)
-    if (quantity > 0) console.log(address,'\t\t\t','\t\t\t',quantity,'\t\t\t',phone_number,'\t\t\t',dist);
+    if (quantity > 0) console.log(product_id,address,'\t\t\t','\t\t\t',quantity,'\t\t\t',phone_number,'\t\t\t',dist);
 }
 
 
@@ -78,17 +78,27 @@ function query_to_file(store_num,product_num){
 }
 
 // for (var i = 0; i < 1000; i++) { 
-//     var product_num = "015980";
+//     var product_num = "016850";
 //     var store_num = i.toString();
 //     query_to_file(store_num,product_num);
 // }
 
 const testFolder = 'tmp/';
 
+neighbor_dict = {};
+
 fs.readdir(testFolder, (err, files) => {
   files.forEach(file => {
     var obj = JSON.parse(fs.readFileSync(testFolder+file, 'utf8'));
-    parse_store_resp(obj);
-   
+    //parse_store_resp(obj);
+    neighbors_list = [];
+
+    var store_id  = obj["NearbyStoreInventoryResponseModel"]["products"]["products"]["storeInfo"]["storeId"]["_text"];
+    neighbors = obj["NearbyStoreInventoryResponseModel"]["products"]["products"]["nearbyStores"]["nearbyStores"];
+
+    for (var i=0; i < neighbors.length;i++){
+        neighbors_list.push(parseInt(neighbors[i]["storeId"]["_text"]));
+    }
+    console.log(store_id, "=>",neighbors_list)
   });
 });
