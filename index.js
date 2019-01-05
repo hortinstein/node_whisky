@@ -30,7 +30,8 @@ process.on('uncaughtException', function(err) {
 
 var product_searches = {
     "015980": "Hibiki Harmony Whiskey",
-    "016850": "Blantons Single Barrel"
+    "016850": "Blantons Single Barrel",
+    "017086": "Bulleit"
 }    
 
 var request_url_first = "https://www.abc.virginia.gov/webapi/inventory/storeNearby?storeNumber=";
