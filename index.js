@@ -65,7 +65,7 @@ function parse_store_resp(obj,results_path){
 
     var dist = geodist(me_loc, store_loc)
     if (quantity > 0) {
-        var result_string = product_id+'\t'+address+'\t'+quantity+'\t'+phone_number+'\t'+dist;
+        var result_string = product_id+'\t'+quantity+'\t'+store_id+'\t\t'+address+'\t\t'+phone_number+'\t\t'+dist;
         fs.appendFileSync(results_path, result_string + '\n');
     }
 }    
@@ -128,6 +128,9 @@ function parse_all_folders(){
                 results_path = testFolder+'/'+dir+'/results_'+product_num;
                 if (fs.existsSync(neighbors_path)){
                     fs.unlinkSync(neighbors_path);
+                }
+                if (fs.existsSync(results_path)){
+                    fs.unlinkSync(results_path);
                 }
                 files.forEach(file => {
                     if (file != "neighbors"){
